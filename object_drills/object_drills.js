@@ -222,9 +222,49 @@ function findOne(arr, query){
   return null;
 }
 
-console.log(findOne(HEROES, { id: 1 }));
-console.log(findOne(HEROES, { id: 10 }));
-console.log(findOne(HEROES, { id: 2, name: 'Aquaman' }));
-console.log(findOne(HEROES, { id: 1, name: 'Captain America' }));
-console.log(findOne(HEROES, { id: 5, squad: 'Justice League' }));
-console.log(findOne(HEROES, { squad: 'Justice League' }));
+// console.log(findOne(HEROES, { id: 1 }));
+// console.log(findOne(HEROES, { id: 10 }));
+// console.log(findOne(HEROES, { id: 2, name: 'Aquaman' }));
+// console.log(findOne(HEROES, { id: 1, name: 'Captain America' }));
+// console.log(findOne(HEROES, { id: 5, squad: 'Justice League' }));
+// console.log(findOne(HEROES, { squad: 'Justice League' }));
+
+const Database = {
+  store: {
+    heroes: [
+      { id: 1, name: 'Captain America', squad: 'Avengers' },
+      { id: 2, name: 'Iron Man', squad: 'Avengers' },
+      { id: 3, name: 'Spiderman', squad: 'Avengers' },
+      { id: 4, name: 'Superman', squad: 'Justice League' },
+      { id: 5, name: 'Wonder Woman', squad: 'Justice League' },
+      { id: 6, name: 'Aquaman', squad: 'Justice League' },
+      { id: 7, name: 'Hulk', squad: 'Avengers' },
+    ]
+  },
+  findOne: function(query) {
+    let arr = this.store.heroes;
+    let keys = Object.keys(query);
+    for (let i = 0; i < arr.length; i++){ //iterating through array of heroes
+      let status = false;
+      for (let j = 0; j < keys.length; j++) { //iterating through the keys in query
+        if (!(keys[j] in arr[i] && arr[i][keys[j]] === query[keys[j]])){ //if (key in obj and value matches key) is false
+          status = false; //set status to false
+          break; //break loop
+        } else {
+          status = true; //set status to true
+        }
+      }
+      if (status){ //if after looping through entire set of keys in query, status is still true
+        return arr[i]; //return
+      }
+    }
+    return null;
+  }
+};
+
+console.log(Database.findOne({ id: 2 }));
+console.log(Database.findOne({ id: 10 }));
+console.log(Database.findOne({ id: 2, name: 'Aquaman' }));
+console.log(Database.findOne({ id: 1, name: 'Captain America' }));
+console.log(Database.findOne({ id: 5, squad: 'Justice League' }));
+console.log(Database.findOne({ squad: 'Justice League' }));

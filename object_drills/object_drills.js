@@ -119,7 +119,7 @@ const jobs = [
     boss: 'Lincoln'
   }
 ];
-
+/*
 for (let i = 0; i < jobs.length; i++) {
   if ('boss' in jobs[i]){
     console.log(`${jobs[i].jobTitle} ${jobs[i].name} doesn't report to anybody.`);
@@ -127,6 +127,7 @@ for (let i = 0; i < jobs.length; i++) {
     console.log(`Job title: ${jobs[i].jobTitle} - Name: ${jobs[i].name}`);
   }
 }
+*/
 
 const cipher = {
   a: 1,
@@ -146,4 +147,48 @@ function decode(msg, cipher) {
 }
 
 const message = decode('craft block argon meter bells brown croon droop', cipher);
-console.log(message);
+//console.log(message);
+
+function createCharacter(name, nickname, race, origin, attack, defense, weapon){
+  return {
+    name,
+    nickname,
+    race,
+    origin,
+    attack,
+    defense,
+    weapon,
+    describe: function(){
+      console.log(`${this.name} is a ${this.race} from ${this.origin} who uses ${this.weapon}`);
+    },
+    evaluateFight: function(opp){
+      let yourAttack = this.attack - opp.defense;
+      let oppAttack = opp.attack - this.defense;
+      if (yourAttack < 0){
+        yourAttack = 0;
+      }
+      if (oppAttack < 0){
+        oppAttack = 0;
+      }
+      return `Your opponent takes ${yourAttack} and you receive ${oppAttack} damage`;
+    },
+  };
+}
+
+const characters = [
+  createCharacter('Gandalf the White', 'gandalf', 'Wizard', 'Middle Earth', 10, 6, 'a wizard staff'),
+  createCharacter('Bilbo Baggins', 'bilbo', 'Hobbit', 'The Shire', 2, 1, 'the Ring'),
+  createCharacter('Frodo Baggins', 'frodo', 'Hobbit', 'The Shire', 3, 2, 'String and Barrow Blade'),
+  createCharacter('Aragorn son of Arathorn', 'aragorn', 'Man', 'Dunnedain', 6, 8, 'Anduril'),
+  createCharacter('Legolas', 'legolas', 'Elf', 'Woodland Realm', 8, 5, 'Bow and Arrow'),
+];
+
+characters.push(createCharacter('Arwen Undomiel', 'arwen', 'Half-Elf', 'Rivendell', 7, 7, 'Hadhafang'));
+/*
+characters.find(function(element) {
+  return element.nickname === 'aragorn';
+}).describe();
+*/
+
+const hobbits = characters.filter(element => element.race === 'Hobbit');
+const attackGreaterThanFive = characters.filter(element => element.attack > 5);

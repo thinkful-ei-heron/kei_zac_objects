@@ -204,8 +204,16 @@ const HEROES = [
 ];
 
 function findOne(arr, query){
+  let keys = Object.keys(query)
   for (let i = 0; i < arr.length; i++){
-    for (Object.keys(query)){
-      
+    for (let j = 0; j < keys.length; j++) {
+      if (arr[i][keys[j]] !== query[keys][j]) {
+        break;
+      }
     }
+    return arr[i];
+  }
+  return null;
 }
+
+console.log(findOne(HEROES, { id: 10 }));

@@ -204,16 +204,27 @@ const HEROES = [
 ];
 
 function findOne(arr, query){
-  let keys = Object.keys(query)
-  for (let i = 0; i < arr.length; i++){
-    for (let j = 0; j < keys.length; j++) {
-      if (arr[i][keys[j]] !== query[keys][j]) {
-        break;
+  let keys = Object.keys(query);
+  for (let i = 0; i < arr.length; i++){ //iterating through array of heroes
+    let status = false;
+    for (let j = 0; j < keys.length; j++) { //iterating through the keys in query
+      if (!(keys[j] in arr[i] && arr[i][keys[j]] === query[keys[j]])){ //if (key in obj and value matches key) is false
+        status = false; //set status to false
+        break; //break loop
+      } else {
+        status = true; //set status to true
       }
     }
-    return arr[i];
+    if (status){ //if after looping through entire set of keys in query, status is still true
+      return arr[i]; //return
+    }
   }
   return null;
 }
 
+console.log(findOne(HEROES, { id: 1 }));
 console.log(findOne(HEROES, { id: 10 }));
+console.log(findOne(HEROES, { id: 2, name: 'Aquaman' }));
+console.log(findOne(HEROES, { id: 1, name: 'Captain America' }));
+console.log(findOne(HEROES, { id: 5, squad: 'Justice League' }));
+console.log(findOne(HEROES, { squad: 'Justice League' }));

@@ -82,3 +82,16 @@ loaf.hydration = function() {
   return loaf.water/loaf.flour*100;
 };
 //console.log(loaf.hydration());
+
+const obj = {
+  foo: 1,
+  bar: 2,
+  fum: 3,
+  quux: 4,
+  spam: 5,
+};
+
+for (let key in obj) {
+  console.log(key);
+  console.log(obj[key]);
+}

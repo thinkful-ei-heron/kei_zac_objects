@@ -37,3 +37,11 @@ function keyDeleter(obj) {
   delete obj.bar;
   return obj;
 }
+
+function makeStudentsReport(data){
+  const strArray = [];
+  for (let i = 0; i < data.length; i++){
+    strArray.push(`${data[i].name}: ${data[i].grade}`);
+  }
+  return strArray;
+}

@@ -121,7 +121,11 @@ const jobs = [
 ];
 
 for (let i = 0; i < jobs.length; i++) {
-//  console.log(`Job title: ${jobs[i].jobTitle} - Name: ${jobs[i].name}`);
+  if ('boss' in jobs[i]){
+    console.log(`${jobs[i].jobTitle} ${jobs[i].name} doesn't report to anybody.`);
+  } else {
+    console.log(`Job title: ${jobs[i].jobTitle} - Name: ${jobs[i].name}`);
+  }
 }
 
 const cipher = {

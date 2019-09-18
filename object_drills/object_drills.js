@@ -107,6 +107,7 @@ const jobs = [
   {
     name: 'Zac',
     jobTitle: 'student',
+    boss: 'Lincoln'
   },
   {
     name: 'Lincoln',
@@ -115,9 +116,14 @@ const jobs = [
   {
     name: 'Susan',
     jobTitle: 'turtle',
+    boss: 'Lincoln'
   }
-]
+];
 
 for (let i = 0; i < jobs.length; i++) {
-//  console.log(`Job title: ${jobs[i].jobTitle} - Name: ${jobs[i].name}`);
+  if ('boss' in jobs[i]){
+    console.log(`${jobs[i].jobTitle} ${jobs[i].name} reports to ${jobs[i].boss}.`);
+  } else {
+    console.log(`${jobs[i].jobTitle} ${jobs[i].name} doesn't report to anybody.`)
+  }
 }

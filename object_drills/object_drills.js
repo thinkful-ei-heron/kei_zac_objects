@@ -121,9 +121,34 @@ const jobs = [
 ];
 
 for (let i = 0; i < jobs.length; i++) {
+<<<<<<< HEAD
   if ('boss' in jobs[i]){
     console.log(`${jobs[i].jobTitle} ${jobs[i].name} reports to ${jobs[i].boss}.`);
   } else {
     console.log(`${jobs[i].jobTitle} ${jobs[i].name} doesn't report to anybody.`)
   }
 }
+=======
+//  console.log(`Job title: ${jobs[i].jobTitle} - Name: ${jobs[i].name}`);
+}
+
+const cipher = {
+  a: 1,
+  b: 2,
+  c: 3,
+  d: 4,
+};
+
+function decode(msg, cipher) {
+  let result = '';
+  let arr = msg.split(' ');
+  for (let i = 0; i < arr.length; i++) {
+    if (!(arr[i][0] in cipher)) result += ' ';
+    else result += arr[i][cipher[arr[i][0]]];
+  }
+  return result;
+}
+
+const message = decode('craft block argon meter bells brown croon droop', cipher);
+console.log(message);
+>>>>>>> 77553849185d8298a8bb66144374c413bc549cd5

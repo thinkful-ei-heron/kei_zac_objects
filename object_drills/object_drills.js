@@ -64,3 +64,10 @@ function findById(items, idNum){
   return null;
 }
 
+function validateKeys(obj, expectedKeys) {
+  for (let i = 0; i < Object.keys(obj).length; i++) {
+    if (!(expectedKeys[i] in obj)) return false;
+  }
+  return true;
+}
+

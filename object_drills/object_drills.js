@@ -102,3 +102,22 @@ const diet = {
   meals: ['breakfast', 'second breakfast', 'elevenses', 'lunch', 'afternoon tea', 'dinner', 'supper'],
 };
 //console.log(`A hobbit's fourth meal of the day is ${diet.meals[3]}`);
+
+const jobs = [
+  {
+    name: 'Zac',
+    jobTitle: 'student',
+  },
+  {
+    name: 'Lincoln',
+    jobTitle: 'president',
+  },
+  {
+    name: 'Susan',
+    jobTitle: 'turtle',
+  }
+]
+
+for (let i = 0; i < jobs.length; i++) {
+//  console.log(`Job title: ${jobs[i].jobTitle} - Name: ${jobs[i].name}`);
+}

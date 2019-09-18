@@ -91,7 +91,14 @@ const obj = {
   spam: 5,
 };
 
+/*
 for (let key in obj) {
   console.log(key);
   console.log(obj[key]);
 }
+*/
+
+const diet = {
+  meals: ['breakfast', 'second breakfast', 'elevenses', 'lunch', 'afternoon tea', 'dinner', 'supper'],
+};
+//console.log(`A hobbit's fourth meal of the day is ${diet.meals[3]}`);

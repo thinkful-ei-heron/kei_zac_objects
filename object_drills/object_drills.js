@@ -45,3 +45,12 @@ function makeStudentsReport(data){
   }
   return strArray;
 }
+
+function enrollInSummerSchool(students) {
+  let result = [];
+  for (let i = 0; i < students.length; i++) {
+    students[i].status = 'In Summer school';
+    result.push(students[i]);
+  }
+  return result;
+}
